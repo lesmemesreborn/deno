@@ -20,8 +20,6 @@ const HeaderContainer = styled.div`
   padding-right: 20%;
   width: 100vw;
   height: 72px;
-
-  /* White */
   background: #ffffff; ;
 `
 const HeaderItem = styled.div`
@@ -33,7 +31,7 @@ const Header = () => {
     <Container>
       <HeaderContainer>
         <HeaderItem>
-          <img src={Back} alt="" /> Cancel
+          <img src={Back} alt=""  /> Cancel
         </HeaderItem>
         <HeaderItem>
           English <img src={Language} alt="" />
