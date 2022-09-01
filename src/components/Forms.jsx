@@ -20,9 +20,9 @@ const FormBlock = styled.div`
 
 const FormContent = styled.div`
   display: flex;
-  width: 64.5%;
+  width: 28vw;
   justify-content: space-between;
-  font-family: "Segoe UI";
+  font-family: "Segoe UI", "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

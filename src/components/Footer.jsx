@@ -9,12 +9,12 @@ const MainContainer = styled.div`
   background: #20252a;
   color: #fff;
   text-align: center;
-  font-family: "Helvetica";
+  font-family: "Roboto";
   justify-content: center;
   align-items: center;
   font-size: 14px;
   gap: 32px;
-  margin-top: 80px;
+  margin-top: 160px;
 `
 
 const Ref = styled.a`

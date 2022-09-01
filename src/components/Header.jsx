@@ -1,5 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
+import Dropdown from "./Dropdown"
 
 //SVG
 import Back from "./assets/backButton.svg"
@@ -24,15 +26,18 @@ const HeaderContainer = styled.div`
 `
 const HeaderItem = styled.div`
   font-size: 15px;
+  color: #000000;
 `
 
 const Header = () => {
   return (
     <Container>
       <HeaderContainer>
-        <HeaderItem>
-          <img src={Back} alt="" /> Cancel
-        </HeaderItem>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <HeaderItem>
+            <img src={Back} alt="" /> Cancel
+          </HeaderItem>
+        </Link>
         <HeaderItem>
           English <img src={Language} alt="" />
         </HeaderItem>

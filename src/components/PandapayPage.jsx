@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useForm } from "react-hook-form"
+import { Link } from "react-router-dom"
 
 //COMPONENTS
 import Forms from "./Forms"
@@ -11,6 +12,7 @@ import BackButton from "./assets/backButton.svg"
 import PandapayLogo from "./assets/pandapayLogo.svg"
 import Mail from "./assets/mail.svg"
 import Phone from "./assets/phone.svg"
+import Copy from "./assets/copy.svg"
 
 const MainContainer = styled.div`
   display: flex;
@@ -117,7 +119,7 @@ const FormBlock = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  font-family: "Helvetica";
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -126,15 +128,41 @@ const FormBlock = styled.div`
 
 const FormContent = styled.input`
   display: flex;
-  width: 400px;
   border: none;
   border-bottom: 1px solid #cfcfcf;
   background-color: transparent;
   align-items: baseline;
+  justify-content: center;
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
+  width: 28vw;
+`
+
+const RequiredPlate = styled.div`
+  text-align: center;
+  width: 50px;
+  height: 24px;
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  color: #24db82;
+  background: rgba(0, 0, 0, 0.04);
+`
+
+const InvalidPlate = styled(RequiredPlate)`
+  color: #ff9900;
+`
+
+const TransferIdTitle = styled.h1`
+  font-family: "Helvetica";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
 `
 
 const PandapayPage = () => {
@@ -142,7 +170,7 @@ const PandapayPage = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm()
+  } = useForm({ mode: "onBlur" })
   const onSubmit = (data) => console.log(data)
 
   return (
@@ -182,27 +210,34 @@ const PandapayPage = () => {
                 Example: 2747420 ヤマ ダ タロ
               </Disclaimer>
               <FormBlock>
-                Transfer ID
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <FormContent
-                    type="text"
-                    {...register("transferId", {
-                      required: true,
-                      validate: {
-                        positiveNumber: (value) => isNaN(parseFloat(value)),
-                        lessThanSeven: (value) => parseFloat(value) > 0,
-                        moreThanSeven: (value) => parseFloat(value) > 9999999,
-                      },
-                    })}
-                    placeholder="2747420"
-                  />
-                  {errors.transferId?.type === "positiveNumber" && (
-                    <p>Invalid number</p>
-                  )}
-                  {errors.transferId?.type === "required" && <p>Please fill</p>}
-
-                  <p>{errors.mail?.message}</p>
-                </form>
+                <TransferIdTitle>Transfer ID</TransferIdTitle>
+                <div>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div>
+                      {errors?.id && (
+                        <RequiredPlate>
+                          {errors?.id?.message || "Error"}
+                        </RequiredPlate>
+                      )}
+                    </div>
+                    <FormContent
+                      type="text"
+                      placeholder="2747420"
+                      {...register("id", {
+                        pattern: /([1-9][0-9]*)|0/,
+                        required: "Required",
+                        minLength: {
+                          value: 1,
+                          message: "Please fill",
+                        },
+                        valueAsNumber: {
+                          value: true,
+                          message: "Invalid Number",
+                        },
+                      })}
+                    />
+                  </form>
+                </div>
               </FormBlock>
 
               <Forms />

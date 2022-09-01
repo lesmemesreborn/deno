@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 //COMPONENTS
 import Header from "./Header"
@@ -16,14 +17,14 @@ import Phone from "./assets/phone.svg"
 const MainContainer = styled.div`
   display: flex;
   flex: 1;
-  width: 100vw;
+  width: 100%;
   border-top: 1px solid #cfcfcf;
   justify-content: center;
   font-size: 15px;
 `
 const Container = styled.div`
   display: flex;
-  width: 48vw;
+  width: 48%;
   justify-content: center;
   flex-direction: column;
   margin-top: 24px;
