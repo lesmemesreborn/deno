@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/deno/static/css/main.1adcedc2.css",
+    "main.js": "/deno/static/js/main.d2f42388.js",
+    "static/js/787.f32f041e.chunk.js": "/deno/static/js/787.f32f041e.chunk.js",
+    "static/media/zestpayLogo.svg": "/deno/static/media/zestpayLogo.35e0b3806b0e396f8238bde351199a1c.svg",
+    "static/media/pandapayLogo.svg": "/deno/static/media/pandapayLogo.5b315b556755497cd218f5a0dbd43ffd.svg",
+    "static/media/wirepayLogo.svg": "/deno/static/media/wirepayLogo.3b8303c0c8e0abbdf0f833cbb1233ecf.svg",
+    "static/media/phone.svg": "/deno/static/media/phone.7d941639a86258dd93de8ba4bf0eb11e.svg",
+    "index.html": "/deno/index.html",
+    "static/media/mail.svg": "/deno/static/media/mail.33f6d3e8277e1b063b77a0e006531a9d.svg",
+    "static/media/copy.svg": "/deno/static/media/copy.26ac68e38686fb28d6ffb32c9913e973.svg",
+    "static/media/forwardArrow.svg": "/deno/static/media/forwardArrow.f1d1d52f8104d60b7aaadd95ee3915bb.svg",
+    "static/media/backButton.svg": "/deno/static/media/backButton.707599b9a2ad1604f5f50eb8aa35a734.svg",
+    "static/media/languageArrow.svg": "/deno/static/media/languageArrow.34fb74652c9f571643dbf09307ac385c.svg",
+    "main.1adcedc2.css.map": "/deno/static/css/main.1adcedc2.css.map",
+    "main.d2f42388.js.map": "/deno/static/js/main.d2f42388.js.map",
+    "787.f32f041e.chunk.js.map": "/deno/static/js/787.f32f041e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1adcedc2.css",
+    "static/js/main.d2f42388.js"
+  ]
+}
