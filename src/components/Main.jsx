@@ -20,7 +20,7 @@ const MainContainer = styled.div`
   display: flex;
   flex: 1;
   width: 100%;
-  height: 100%;
+  height: 71px;
   border-top: 1px solid #cfcfcf;
   justify-content: center;
   font-size: 15px;

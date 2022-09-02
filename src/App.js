@@ -7,34 +7,32 @@ import PandapayPage from "./components/PandapayPage"
 import Main from "./components/Main"
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 
-const Container = styled.div`
+const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+`
+
+const Container = styled.div`
+  flex-grow: 1;
 `
 
 const App = () => {
   return (
     <Router>
-      <Container>
+      <MainWrapper>
         <Header />
-        <Routes>
-          <Route path="/pandapay" element={<PandapayPage />} />
-          <Route path="/wirepay" element={<WirepayPage />} />
-          <Route path="/" element={<Main />} />
-        </Routes>
+        <Container>
+          <Routes>
+            <Route path="/pandapay" element={<PandapayPage />} />
+            <Route path="/wirepay" element={<WirepayPage />} />
+            <Route path="/" element={<Main />} />
+          </Routes>
+        </Container>
         <Footer />
-      </Container>
+      </MainWrapper>
     </Router>
   )
 }
-// {
-//   ;<Router>
-//     <Routes>
-//       <Route path="/pandapay" element={<PandapayPage />} />
-//       <Route path="/wirepay" element={<WirepayPage />} />
-//       <Route path="/" element={<Main />} />
-//     </Routes>
-//   </Router>
-// }
 
 export default App
