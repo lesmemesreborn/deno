@@ -16,53 +16,71 @@ import Mail from "./assets/mail.svg"
 import Phone from "./assets/phone.svg"
 import Forward from "./assets/forwardArrow.svg"
 
-const MainContainer = styled.div`
-  display: flex;
-  flex: 1;
-  width: 100%;
-  height: 71px;
-  border-top: 1px solid #cfcfcf;
-  justify-content: center;
-  font-size: 15px;
+const Main = () => {
+  return (
+    <Wrapper>
+      <Container>
+        <Title>Select a payment option:</Title>
+        <PayList>
+          <Link to="/pandapay" style={{ textDecoration: "none" }}>
+            <MainContentItem>
+              <PandaImg src={PandapayLogo} />
+              <DescText>Pay from your bank account</DescText>
+              <img src={Forward} alt="" />
+            </MainContentItem>
+          </Link>
+          <Hr />
+          <Link to="/wirepay" style={{ textDecoration: "none" }}>
+            <MainContentItem>
+              <WireImg src={WirepayLogo} />
+              <DescText>
+                Pay from your bank account, also known as direct payment
+              </DescText>
+              <ForwardBlock>
+                <img src={Forward} alt="" />
+              </ForwardBlock>
+            </MainContentItem>
+          </Link>
+        </PayList>
+      </Container>
+    </Wrapper>
+  )
+}
+
+const Wrapper = styled.div`
+  padding-top: 40px;
+  box-sizing: border-box;
 `
 const Container = styled.div`
-  display: flex;
-  width: 48vw;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 24px;
+  width: 1320px;
+  max-width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
 `
 
-const TopContent = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 18px;
-  align-items: center;
-  margin-bottom: 80px;
-`
+// const MainContentContainer = styled.div`
+//   width: 694px;
+//   max-width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   margin: auto;
+//   border: 1px solid #cfcfcf;
+//   border-radius: 16px;
+//   margin-top: 32px;
+// `
 
-const MainContentContainer = styled.div`
+const MainContentItem = styled.li`
+  padding: 32px;
   display: flex;
-  flex-direction: column;
-  border: 1px solid #cfcfcf;
-  border-radius: 16px;
-  margin-top: 32px;
-`
-
-const MainContentItem = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Segoe UI", "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 24px;
   flex-wrap: wrap;
-  padding: 32px 5%;
-  color: #000000;
+  -moz-box-align: center;
+  align-items: center;
+  -moz-box-pack: justify;
+  justify-content: space-between;
+  text-decoration: none;
+  transition: background-color 0.3s ease 0s;
+  color: #000;
+  line-height: 1.6;
 
   &:hover,
   &:focus {
@@ -70,27 +88,41 @@ const MainContentItem = styled.div`
     background: rgba(0, 0, 0, 0.04);
   }
 `
-const Img = styled.img`
-  height: 30px;
-  width: 150px;
+const PandaImg = styled.img`
+  height: 31px;
+  width: 153px;
+`
+const WireImg = styled.img`
+  height: 31px;
+  width: 163px;
 `
 
-const Title = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Roboto";
-  font-style: normal;
+const ForwardBlock = styled.span`
+  width: 6px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  display: block;
+  background: rgba(0, 0, 0, 0) url("./images/icons/angle-right.svg") no-repeat
+    scroll center center / cover;
+  margin: -5px 0px 0px -3px;
+`
+
+const Title = styled.h2`
+  text-align: center;
+  margin: 0px 0px 32px;
+  font-family: "Helvetica";
   font-weight: 700;
   font-size: 36px;
-  line-height: 48px;
+  line-height: 1.333;
 `
 
-const Hr = styled.hr`
-  border-top: #cfcfcf;
-  width: 90%;
-  margin: 0;
-  align-self: center;
+const Hr = styled.div`
+  margin: 0px 32px;
+  display: block;
+  background: rgb(207, 207, 207) none repeat scroll 0% 0%;
+  height: 1px;
+  width: auto;
 `
 
 const MainContent = styled.div`
@@ -98,43 +130,19 @@ const MainContent = styled.div`
   flex-direction: column;
 `
 
-const Main = () => {
-  return (
-    <div>
-      <MainContainer>
-        <Container>
-          <TopContent>
-            <img
-              src={ZestpayLogo}
-              alt=""
-              style={{ width: "82px", height: "56px" }}
-            />
-            <div>Payment to: MerchantName</div>
-          </TopContent>
-          <Title>Select a payment option:</Title>
-          <MainContentContainer>
-            <Link to="/pandapay" style={{ textDecoration: "none" }}>
-              <MainContentItem>
-                <Img src={PandapayLogo} />
-                <div>Pay from your bank account</div>
-                <img src={Forward} alt="" />
-              </MainContentItem>
-            </Link>
-            <Hr />
-            <Link to="/wirepay" style={{ textDecoration: "none" }}>
-              <MainContentItem>
-                <Img src={WirepayLogo} />
-                <div>
-                  Pay from your bank account, also known as direct payment
-                </div>
-                <img src={Forward} alt="" />
-              </MainContentItem>
-            </Link>
-          </MainContentContainer>
-        </Container>
-      </MainContainer>
-    </div>
-  )
-}
+const DescText = styled.div`
+  width: 200px;
+  font-size: 15px;
+`
+
+const PayList = styled.ul`
+  padding: 0px;
+  margin: auto;
+  list-style: none;
+  width: 694px;
+  max-width: 100%;
+  border: 1px solid #cfcfcf;
+  border-radius: 16px;
+`
 
 export default Main

@@ -1,34 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
-const DropdownContainer = styled.div`
-  display: flex;
-  border-radius: 8px;
-  width: 160px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 2px 2px 4px #cfcfcf;
-`
-const DropdownItem = styled.div`
-  font-family: "Segoe UI";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 24px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  padding-left: 8px;
-  align-self: stretch;
-  border-radius: inherit;
-  &:hover,
-  &:focus {
-    cursor: pointer;
-    background: #24db82;
-    color: white;
-  }
-`
-
 const Dropdown = ({ title, multiSelect = false }) => {
   const [open, setOpen] = useState(false)
   const [selection, setSelection] = useState([])
@@ -52,17 +24,9 @@ const Dropdown = ({ title, multiSelect = false }) => {
   ]
 
   return (
-    <DropdownContainer>
-      <DropdownItem
-        tabIndex={0}
-        role="button"
-        onKeyPress={() => toggle(!open)}
-        onClick={() => toggle(!open)}
-      >
-        <p>{title}</p>
-      </DropdownItem>
+    <div>
       {open && (
-        <ul>
+        <DropdownContainer>
           {items.map((item) => (
             <DropdownItem key={item.id}>
               <div onClick={() => handleOnClick(item)}>
@@ -70,10 +34,46 @@ const Dropdown = ({ title, multiSelect = false }) => {
               </div>
             </DropdownItem>
           ))}
-        </ul>
+        </DropdownContainer>
       )}
-    </DropdownContainer>
+    </div>
   )
 }
 
+const DropdownContainer = styled.ul`
+  display: flex;
+  border-radius: 8px;
+  width: 160px;
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 2px 2px 4px #cfcfcf;
+  flex-direction: column;
+  padding: 0px;
+`
+const DropdownItem = styled.div`
+  display: flex;
+  font-family: "Segoe UI";
+  height: 32px;
+  width: 100%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  padding-left: 8px;
+  &:hover,
+  &:focus {
+    width: 96%;
+    cursor: pointer;
+    background: #24db82;
+    color: white;
+  }
+  :first-child {
+    border-radius: 8px 8px 0 0;
+  }
+  :last-child {
+    border-radius: 0 0 8px 8px;
+  }
+`
 export default Dropdown

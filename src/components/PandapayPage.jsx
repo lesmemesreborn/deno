@@ -1,6 +1,5 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
-import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
 
 //COMPONENTS
@@ -14,49 +13,150 @@ import Mail from "./assets/mail.svg"
 import Phone from "./assets/phone.svg"
 import Copy from "./assets/copy.svg"
 
+const PandapayPage = () => {
+  const [id, setId] = useState("")
+  const [idDirty, setIdDirty] = useState(false)
+  const [idError, setIdError] = useState("Invalid number")
+
+  const idHandler = (e) => {
+    setId(e.target.value)
+    const reg = new RegExp("^[0-9]+$")
+    if (!reg.test(String(e.target.value))) {
+      setIdError("Invalid Number")
+    } else setIdError("")
+  }
+
+  const blurHandler = (e) => {
+    switch (e.target.name) {
+      case "id":
+        setIdDirty(true)
+        break
+    }
+  }
+
+  return (
+    <div>
+      <MainContainer>
+        <Container>
+          <Header>
+            <MainContentTopItem>
+              <Link to="/" style={{ color: "#000", textDecoration: "none" }}>
+                <img src={BackButton} alt="" /> Change option
+              </Link>
+            </MainContentTopItem>
+
+            <PandaImg src={PandapayLogo} alt="" />
+
+            <PayFrom>Pay from your bank account</PayFrom>
+
+            <MainContent>
+              <Disclaimer>
+                Please fill in the Transfer ID in the Beneficiary field and make
+                the transfer from your bank account. Without Transfer ID your
+                payment will not be credited.
+                <p />
+                Example: 2747420 ヤマ ダ タロ
+              </Disclaimer>
+              <FormBlock>
+                <TransferIdTitle>Transfer ID</TransferIdTitle>
+                <div>
+                  <form>
+                    {id.length === 0 && <RequiredPlate>Required</RequiredPlate>}
+                    {idDirty && idError && id.length > 0 && (
+                      <InvalidPlate>{idError}</InvalidPlate>
+                    )}
+                    {idDirty && !idError && id.length < 7 && (
+                      <RequiredPlate>Please Fill</RequiredPlate>
+                    )}
+                    {!idError && id.length >= 7 && (
+                      <RequiredPlate>ok</RequiredPlate>
+                    )}
+
+                    <FormContent
+                      onBlur={(e) => blurHandler(e)}
+                      value={id}
+                      name="id"
+                      type="text"
+                      placeholder="2472423"
+                      onChange={(e) => idHandler(e)}
+                      minlength="7"
+                      maxlength="7"
+                      pattern="^(0|[1-9][0-9]*)$"
+                    ></FormContent>
+                  </form>
+                </div>
+              </FormBlock>
+
+              <Forms />
+              <CloseBlock>
+                <CloseButton>Close</CloseButton>
+              </CloseBlock>
+              <FooterContent>
+                <div>Payment inquiries:</div>
+                <FooterContentGreenText href="mailto:support@global-feed.com">
+                  <Img src={Mail} alt="" />
+                  <span>support@global-feed.com</span>
+                </FooterContentGreenText>
+                <FooterContentGreenTextPhone href="tel:03–6332–6639">
+                  <Img src={Phone} alt="" /> 03–6332–6639
+                </FooterContentGreenTextPhone>
+              </FooterContent>
+            </MainContent>
+          </Header>
+        </Container>
+      </MainContainer>
+    </div>
+  )
+}
+
 const MainContainer = styled.div`
   display: flex;
-  flex: 1;
-  width: 100vw;
-  border-top: 1px solid #cfcfcf;
+  width: 1320px;
+  max-width: 100%;
+  padding: 0 20px;
+  margin: 0 auto 160px;
   justify-content: center;
   font-size: 15px;
 `
 const Container = styled.div`
-  display: flex;
-  width: 48vw;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 24px;
-`
-
-const TopContent = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 18px;
-  align-items: center;
-`
-
-const MainContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #cfcfcf;
+  width: 696px;
+  max-width: 100%;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(207, 207, 207);
   border-radius: 16px;
-  padding: 32px 4.5%;
-  margin-top: 48px;
+  padding: 0px 32px;
+  margin: 5px auto 0px;
 `
 
-const MainContentTop = styled.div`
+const Header = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+`
+
+const PandaImg = styled.img`
+  display: block;
+  width: 153px;
+  margin-right: 10px;
+`
+
+const PayFrom = styled.p`
+  display: block;
+  max-width: 200px;
+  font-size: 15px;
 `
 
 const MainContentTopItem = styled.div`
-  margin-bottom: 32px;
-  width: 33%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  vertical-align: top;
+  font-size: 15px;
+  line-height: 24px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  padding: 32px 0px;
 `
 
 const MainContent = styled.div`
@@ -131,18 +231,26 @@ const FormContent = styled.input`
   border: none;
   border-bottom: 1px solid #cfcfcf;
   background-color: transparent;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
-  width: 28vw;
+  width: 27.8vw;
+  :invalid {
+    border-bottom: 1px solid #ff9900;
+  }
+  :valid {
+    border-bottom: 1px solid #24db82;
+  }
 `
 
 const RequiredPlate = styled.div`
-  text-align: center;
-  width: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: justify;
   height: 24px;
   font-family: "Segoe UI";
   font-style: normal;
@@ -164,102 +272,5 @@ const TransferIdTitle = styled.h1`
   font-size: 18px;
   line-height: 32px;
 `
-
-const PandapayPage = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm({ mode: "onBlur" })
-  const onSubmit = (data) => console.log(data)
-
-  return (
-    <div>
-      <MainContainer>
-        <Container>
-          <TopContent>
-            <img
-              src={ZestpayLogo}
-              alt=""
-              style={{ width: "82px", height: "56px" }}
-            />
-            <div>Payment to: MerchantName</div>
-          </TopContent>
-          <MainContentContainer>
-            <MainContentTop>
-              <MainContentTopItem>
-                <img src={BackButton} alt="" /> Change option
-              </MainContentTopItem>
-              <MainContentTopItem>
-                <img
-                  src={PandapayLogo}
-                  alt=""
-                  style={{ width: "153px", height: "29px" }}
-                />
-              </MainContentTopItem>
-              <MainContentTopItem>
-                Pay from your bank account
-              </MainContentTopItem>
-            </MainContentTop>
-            <MainContent>
-              <Disclaimer>
-                Please fill in the Transfer ID in the Beneficiary field and make
-                the transfer from your bank account. Without Transfer ID your
-                payment will not be credited.
-                <p />
-                Example: 2747420 ヤマ ダ タロ
-              </Disclaimer>
-              <FormBlock>
-                <TransferIdTitle>Transfer ID</TransferIdTitle>
-                <div>
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    <div>
-                      {errors?.id && (
-                        <RequiredPlate>
-                          {errors?.id?.message || "Error"}
-                        </RequiredPlate>
-                      )}
-                    </div>
-                    <FormContent
-                      type="text"
-                      placeholder="2747420"
-                      {...register("id", {
-                        pattern: /([1-9][0-9]*)|0/,
-                        required: "Required",
-                        minLength: {
-                          value: 1,
-                          message: "Please fill",
-                        },
-                        valueAsNumber: {
-                          value: true,
-                          message: "Invalid Number",
-                        },
-                      })}
-                    />
-                  </form>
-                </div>
-              </FormBlock>
-
-              <Forms />
-              <CloseBlock>
-                <CloseButton>Close</CloseButton>
-              </CloseBlock>
-              <FooterContent>
-                <div>Payment inquiries:</div>
-                <FooterContentGreenText href="mailto:support@global-feed.com">
-                  <Img src={Mail} alt="" />
-                  <span>support@global-feed.com</span>
-                </FooterContentGreenText>
-                <FooterContentGreenTextPhone href="tel:03–6332–6639">
-                  <Img src={Phone} alt="" /> 03–6332–6639
-                </FooterContentGreenTextPhone>
-              </FooterContent>
-            </MainContent>
-          </MainContentContainer>
-        </Container>
-      </MainContainer>
-    </div>
-  )
-}
 
 export default PandapayPage

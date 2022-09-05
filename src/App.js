@@ -5,22 +5,12 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import PandapayPage from "./components/PandapayPage"
 import Main from "./components/Main"
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
-
-const MainWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`
-
-const Container = styled.div`
-  flex-grow: 1;
-`
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 const App = () => {
   return (
-    <Router>
-      <MainWrapper>
+    <MainWrapper>
+      <Router>
         <Header />
         <Container>
           <Routes>
@@ -30,9 +20,24 @@ const App = () => {
           </Routes>
         </Container>
         <Footer />
-      </MainWrapper>
-    </Router>
+      </Router>
+    </MainWrapper>
   )
 }
+
+const MainWrapper = styled.div`
+  color: #000;
+  font-family: "Segoe UI";
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`
+
+const Container = styled.div`
+  flex-grow: 1;
+`
 
 export default App
