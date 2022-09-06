@@ -7,11 +7,13 @@ import PandapayPage from "./components/PandapayPage"
 import Main from "./components/Main"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { device } from "./device"
+import GlobalStyles from './global'
 
 const App = () => {
   return (
-    <MainWrapper>
+ <>
       <Router>
+            <MainWrapper>
         <Header />
         <Container>
           <Routes>
@@ -21,8 +23,10 @@ const App = () => {
           </Routes>
         </Container>
         <Footer />
+        </MainWrapper>
       </Router>
-    </MainWrapper>
+      <GlobalStyles />
+      </>
   )
 }
 
