@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { device } from "../device"
 
 //COMPONENTS
 import Forms from "./Forms"
@@ -59,7 +60,7 @@ const PandapayPage = () => {
               </Disclaimer>
               <FormBlock>
                 <TransferIdTitle>Transfer ID</TransferIdTitle>
-                <div>
+                <Form>
                   <form>
                     {id.length === 0 && <RequiredPlate>Required</RequiredPlate>}
                     {idDirty && idError && id.length > 0 && (
@@ -82,11 +83,11 @@ const PandapayPage = () => {
                       minlength="7"
                       maxlength="7"
                       pattern="^(0|[1-9][0-9]*)$"
+                      autocomplete="off"
                     ></FormContent>
                   </form>
-                </div>
+                </Form>
               </FormBlock>
-
               <Forms />
               <CloseBlock>
                 <CloseButton>Close</CloseButton>
@@ -133,18 +134,49 @@ const Header = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @media ${device.laptop} {
+    flex-direction: row;
+    align-items: center;
+  }
 `
 
 const PandaImg = styled.img`
   display: block;
   width: 153px;
   margin-right: 10px;
+  @media ${device.mobile} {
+    padding-top: 24px;
+  }
+  @media ${device.laptop} {
+    padding-top: 0px;
+  }
+`
+const Form = styled.div`
+  width: 100%;
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  @media ${device.laptop} {
+    flex-direction: row;
+  }
 `
 
 const PayFrom = styled.p`
   display: block;
   max-width: 200px;
   font-size: 15px;
+  @media ${device.mobile} {
+    padding-top: 0px;
+  }
+  @media ${device.laptop} {
+    padding-top: 0px;
+  }
 `
 
 const MainContentTopItem = styled.div`
@@ -157,6 +189,14 @@ const MainContentTopItem = styled.div`
   color: rgb(0, 0, 0);
   text-decoration: none;
   padding: 32px 0px;
+  @media ${device.mobile} {
+    width: 100%;
+    border-bottom: 1px solid #cfcfcf;
+  }
+  @media ${device.laptop} {
+    border-bottom: none;
+    width: inherit;
+  }
 `
 
 const MainContent = styled.div`
@@ -179,6 +219,15 @@ const FooterContent = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 40px;
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  @media ${device.laptop} {
+    flex-direction: row;
+    align-items: center;
+  }
 `
 
 const Img = styled.img`
@@ -224,6 +273,14 @@ const FormBlock = styled.div`
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 30px;
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  @media ${device.laptop} {
+    flex-direction: row;
+  }
 `
 
 const FormContent = styled.input`
@@ -244,6 +301,15 @@ const FormContent = styled.input`
   :valid {
     border-bottom: 1px solid #24db82;
   }
+  @media ${device.mobile} {
+    align-items: flex-start;
+    width: 100%;
+    gap: 8px;
+  }
+  @media ${device.laptop} {
+    flex-direction: row;
+    width: 27.8vw;
+  }
 `
 
 const RequiredPlate = styled.div`
@@ -259,6 +325,7 @@ const RequiredPlate = styled.div`
   line-height: 24px;
   color: #24db82;
   background: rgba(0, 0, 0, 0.04);
+  max-width: 75px;
 `
 
 const InvalidPlate = styled(RequiredPlate)`
@@ -271,6 +338,15 @@ const TransferIdTitle = styled.h1`
   font-weight: 700;
   font-size: 18px;
   line-height: 32px;
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: -8px;
+  }
+  @media ${device.laptop} {
+    flex-direction: row;
+  }
 `
 
 export default PandapayPage

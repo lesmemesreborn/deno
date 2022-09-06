@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import Dropdown from "./Dropdown"
+import { device } from "../device"
 
 //SVG
 import Back from "./assets/backButton.svg"
@@ -9,7 +10,7 @@ import Language from "./assets/languageArrow.svg"
 import ZestpayLogo from "./assets/zestpayLogo.svg"
 
 const Header = () => {
-  const [open, setOpen] = useState(false)
+  const [dropdownActive, setDropdownActive] = useState(false)
   return (
     <Container>
       <Top>
@@ -19,18 +20,22 @@ const Header = () => {
               <ImgBack src={Back} alt="" /> Cancel
             </Cancel>
           </Link>
-          <LanguageBlock>
+          <LogoHeader src={ZestpayLogo} alt="" />
+          <LanguageBlock onClick={() => setDropdownActive(!dropdownActive)}>
             <LanguageBlock>
               English <ImgLanguage src={Language} alt="" />
             </LanguageBlock>
-            <Dropdown />
+            <Dropdown active={dropdownActive} setActive={setDropdownActive} />
           </LanguageBlock>
         </TopInner>
       </Top>
       <TopContent>
         <Logo src={ZestpayLogo} alt="" />
         <HeaderTitle>
-          <span>Payment to: MerchantName</span>
+          <p>
+            <PaymentText>Payment to: </PaymentText>
+            MerchantName
+          </p>
         </HeaderTitle>
       </TopContent>
     </Container>
@@ -41,6 +46,12 @@ const Container = styled.div`
   display: flex;
   padding-bottom: 40px;
   flex-direction: column;
+  @media ${device.mobile} {
+    padding: 0 20px 40px 20px;
+  }
+  @media ${device.laptop} {
+    padding: 0px 0px 40px 0px;
+  }
 `
 
 const Top = styled.div`
@@ -82,6 +93,7 @@ const LanguageBlock = styled.div`
   line-height: 24px;
   color: rgb(0, 0, 0);
   text-decoration: none;
+  cursor: pointer;
 `
 
 const ImgBack = styled.img`
@@ -95,6 +107,38 @@ const ImgLanguage = styled.img`
 const Logo = styled.img`
   width: 82px;
   margin-right: auto;
+  @media ${device.mobile} {
+    display: none;
+  }
+  @media ${device.laptop} {
+    display: block;
+  }
+`
+
+const LogoHeader = styled.img`
+  width: 82px;
+  margin-right: auto;
+  @media ${device.mobile} {
+    display: block;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  @media ${device.laptop} {
+    display: none;
+  }
+`
+
+const PaymentText = styled.span`
+  font-family: "Helvetica";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  @media ${device.mobile} {
+    color: #828282;
+  }
+  @media ${device.laptop} {
+    color: #000;
+  }
 `
 
 const HeaderTitle = styled.p`

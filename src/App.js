@@ -6,6 +6,7 @@ import Footer from "./components/Footer"
 import PandapayPage from "./components/PandapayPage"
 import Main from "./components/Main"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { device } from "./device"
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const MainWrapper = styled.div`
 
 const Container = styled.div`
   flex-grow: 1;
+  margin-bottom: 160px;
 `
 
 export default App

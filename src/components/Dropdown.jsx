@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
-const Dropdown = ({ title, multiSelect = false }) => {
+const Dropdown = ({ active, setActive }) => {
   const [open, setOpen] = useState(false)
   const [selection, setSelection] = useState([])
   const toggle = () => setOpen(!open)

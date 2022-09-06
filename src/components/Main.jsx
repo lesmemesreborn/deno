@@ -1,11 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link, NavLink } from "react-router-dom"
-
-//COMPONENTS
-import Header from "./Header"
-import Footer from "./Footer"
-import Forms from "./Forms"
+import { device } from "../device"
 
 //SVGS
 import ZestpayLogo from "./assets/zestpayLogo.svg"
@@ -48,8 +44,13 @@ const Main = () => {
 }
 
 const Wrapper = styled.div`
-  padding-top: 40px;
   box-sizing: border-box;
+  @media ${device.mobile} {
+    padding-top: 5px;
+  }
+  @media ${device.laptop} {
+    padding-top: 40px;
+  }
 `
 const Container = styled.div`
   width: 1320px;
@@ -57,17 +58,6 @@ const Container = styled.div`
   padding: 0 20px;
   margin: 0 auto;
 `
-
-// const MainContentContainer = styled.div`
-//   width: 694px;
-//   max-width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   margin: auto;
-//   border: 1px solid #cfcfcf;
-//   border-radius: 16px;
-//   margin-top: 32px;
-// `
 
 const MainContentItem = styled.li`
   padding: 32px;
@@ -115,6 +105,11 @@ const Title = styled.h2`
   font-weight: 700;
   font-size: 36px;
   line-height: 1.333;
+
+  @media ${device.mobile} {
+    font-size: 24px;
+    margin: 0px 0px 20px;
+  }
 `
 
 const Hr = styled.div`
