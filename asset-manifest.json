@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/deno/static/css/main.1adcedc2.css",
-    "main.js": "/deno/static/js/main.d2f42388.js",
+    "main.js": "/deno/static/js/main.c198c273.js",
     "static/js/787.f32f041e.chunk.js": "/deno/static/js/787.f32f041e.chunk.js",
-    "static/media/zestpayLogo.svg": "/deno/static/media/zestpayLogo.35e0b3806b0e396f8238bde351199a1c.svg",
-    "static/media/pandapayLogo.svg": "/deno/static/media/pandapayLogo.5b315b556755497cd218f5a0dbd43ffd.svg",
-    "static/media/wirepayLogo.svg": "/deno/static/media/wirepayLogo.3b8303c0c8e0abbdf0f833cbb1233ecf.svg",
-    "static/media/phone.svg": "/deno/static/media/phone.7d941639a86258dd93de8ba4bf0eb11e.svg",
+    "static/media/zestpayLogo.svg": "/deno/static/media/zestpayLogo.936d98cba6521277ac36cd2ea4f9f124.svg",
+    "static/media/pandapayLogo.svg": "/deno/static/media/pandapayLogo.00b5d79ee65bf5da41f32767f89d5fb9.svg",
+    "static/media/wirepayLogo.svg": "/deno/static/media/wirepayLogo.17105bcde64c11beadafe10cf98001ae.svg",
+    "static/media/phone.svg": "/deno/static/media/phone.636b362663d79b6450ee16696ef86709.svg",
     "index.html": "/deno/index.html",
-    "static/media/mail.svg": "/deno/static/media/mail.33f6d3e8277e1b063b77a0e006531a9d.svg",
-    "static/media/copy.svg": "/deno/static/media/copy.26ac68e38686fb28d6ffb32c9913e973.svg",
-    "static/media/forwardArrow.svg": "/deno/static/media/forwardArrow.f1d1d52f8104d60b7aaadd95ee3915bb.svg",
-    "static/media/backButton.svg": "/deno/static/media/backButton.707599b9a2ad1604f5f50eb8aa35a734.svg",
-    "static/media/languageArrow.svg": "/deno/static/media/languageArrow.34fb74652c9f571643dbf09307ac385c.svg",
+    "static/media/mail.svg": "/deno/static/media/mail.a72d1bd5c4c710c3834ebf72cee0cddf.svg",
+    "static/media/copy.svg": "/deno/static/media/copy.cc5ce1c09f066e95ff73b4d5f38a5bff.svg",
+    "static/media/forwardArrow.svg": "/deno/static/media/forwardArrow.09e256282e456d86e2c0739f5a7da27c.svg",
+    "static/media/backButton.svg": "/deno/static/media/backButton.c662e976977579f40b53c41701ebc73d.svg",
+    "static/media/languageArrow.svg": "/deno/static/media/languageArrow.6816522f731dd573e8fe23178646296b.svg",
     "main.1adcedc2.css.map": "/deno/static/css/main.1adcedc2.css.map",
-    "main.d2f42388.js.map": "/deno/static/js/main.d2f42388.js.map",
+    "main.c198c273.js.map": "/deno/static/js/main.c198c273.js.map",
     "787.f32f041e.chunk.js.map": "/deno/static/js/787.f32f041e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1adcedc2.css",
-    "static/js/main.d2f42388.js"
+    "static/js/main.c198c273.js"
   ]
 }
