@@ -62,7 +62,7 @@ const MainContainer = styled.div`
   width: 1320px;
   max-width: 100%;
   padding: 0 20px;
-  margin: 0 auto 160px;
+  margin: 0 auto;
   justify-content: center;
   font-size: 15px;
 `
@@ -141,9 +141,13 @@ const MainContent = styled.div`
 
   @media ${device.mobile} {
     border-top: none;
+    max-width: 100%;
+    width: 375px;
   }
   @media ${device.laptop} {
     border-top: 1px solid #cfcfcf;
+    max-width: 100%;
+    width: 696px;
   }
 `
 

@@ -1,53 +1,57 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Copy from "./assets/copy.svg"
 import { device } from "../device"
+import Copied from "./Copied"
 
 const Forms = () => {
+  const [active, setActive] = useState(false)
+
   return (
     <Container>
       <FormBlock>
         Bank name{" "}
         <FormContentBank>
           SBI
-          <Img src={Copy} alt="" onClick={() => alert("qwe123")} />
+          <Img src={Copy} alt="" onClick={() => setActive(true)} />
         </FormContentBank>
       </FormBlock>
       <FormBlock>
         Branch name{" "}
         <FormContentBank>
           adb barwala
-          <Img src={Copy} alt="" onClick={() => alert("qwe123")} />
+          <Img src={Copy} alt="" onClick={() => setActive(true)} />
         </FormContentBank>
       </FormBlock>
       <FormBlock>
         Account type{" "}
         <FormContent>
           Savings Account
-          <Img src={Copy} alt="" onClick={() => alert("qwe123")} />
+          <Img src={Copy} alt="" onClick={() => setActive(true)} />
         </FormContent>
       </FormBlock>
       <FormBlock>
-        Account number{" "}
+        Account number
         <FormContent>
           3025766
-          <Img src={Copy} alt="" onClick={() => alert("qwe123")} />
+          <Img src={Copy} alt="" onClick={() => setActive(true)} />
         </FormContent>
       </FormBlock>
       <FormBlock>
         Account holder{" "}
         <FormContent>
           Testing Name
-          <Img src={Copy} alt="" onClick={() => alert("qwe123")} />
+          <Img src={Copy} alt="" onClick={() => setActive(true)} />
         </FormContent>
       </FormBlock>
       <FormBlock>
         Amount{" "}
         <FormContent>
           6000.00 JPY
-          <Img src={Copy} alt="" onClick={() => alert("qwe123")} />
+          <Img src={Copy} alt="" onClick={() => setActive(true)} />
         </FormContent>
       </FormBlock>
+      <Copied active={active} setActive={setActive} />
     </Container>
   )
 }
@@ -62,7 +66,7 @@ const Container = styled.div`
   margin-bottom: 50px;
   @media ${device.mobile} {
     width: 100%;
-    border-top: 1px solid #cfcfcf;
+
     padding-top: 16px;
   }
   @media ${device.laptop} {
@@ -89,7 +93,7 @@ const FormBlock = styled.div`
 
 const FormContent = styled.div`
   display: flex;
-  width: 28vw;
+  width: 100%;
   justify-content: space-between;
   font-family: "Segoe UI", "Roboto";
   font-style: normal;
@@ -103,12 +107,14 @@ const FormContent = styled.div`
   @media ${device.mobile} {
     align-items: flex-start;
     width: 100%;
+    max-width: 400px;
     gap: 8px;
     padding-left: 0px;
   }
   @media ${device.laptop} {
     flex-direction: row;
-    width: 28vw;
+    width: 100%;
+    max-width: 400px;
     padding-left: 12px;
   }
 `

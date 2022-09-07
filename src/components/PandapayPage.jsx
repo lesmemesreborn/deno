@@ -45,11 +45,8 @@ const PandapayPage = () => {
                 <img src={BackButton} alt="" /> Change option
               </Link>
             </MainContentTopItem>
-
             <PandaImg src={PandapayLogo} alt="" />
-
             <PayFrom>Pay from your bank account</PayFrom>
-
             <MainContent>
               <Disclaimer>
                 Please fill in the Transfer ID in the Beneficiary field and make
@@ -58,6 +55,7 @@ const PandapayPage = () => {
                 <p />
                 Example: 2747420 ヤマ ダ タロ
               </Disclaimer>
+
               <FormBlock>
                 <TransferIdTitle>Transfer ID</TransferIdTitle>
                 <Form>
@@ -115,7 +113,7 @@ const MainContainer = styled.div`
   width: 1320px;
   max-width: 100%;
   padding: 0 20px;
-  margin: 0 auto 160px;
+  margin: 0 auto;
   justify-content: center;
   font-size: 15px;
 `
@@ -156,7 +154,6 @@ const PandaImg = styled.img`
   }
 `
 const Form = styled.div`
-  width: 100%;
   @media ${device.mobile} {
     flex-direction: column;
     align-items: flex-start;
@@ -164,6 +161,7 @@ const Form = styled.div`
   }
   @media ${device.laptop} {
     flex-direction: row;
+    width: 100%;
   }
 `
 
@@ -194,6 +192,7 @@ const MainContentTopItem = styled.div`
     border-bottom: 1px solid #cfcfcf;
   }
   @media ${device.laptop} {
+    width: 100%;
     border-bottom: none;
     width: inherit;
   }
@@ -265,11 +264,10 @@ const CloseButton = styled.button`
   margin-bottom: 50px;
 `
 const FormBlock = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: flex-start;
   justify-content: space-between;
   font-family: "Roboto";
-  font-style: normal;
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 30px;
@@ -277,9 +275,12 @@ const FormBlock = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    max-width: 400px;
   }
   @media ${device.laptop} {
     flex-direction: row;
+    width: 100%;
+    max-width: 696px;
   }
 `
 
@@ -294,7 +295,6 @@ const FormContent = styled.input`
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
-  width: 27.8vw;
   :invalid {
     border-bottom: 1px solid #ff9900;
   }
@@ -308,15 +308,17 @@ const FormContent = styled.input`
   }
   @media ${device.laptop} {
     flex-direction: row;
-    width: 27.8vw;
+    width: 400px;
+    max-width: 100%;
+    padding-left: 12px;
   }
 `
 
 const RequiredPlate = styled.div`
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
-  text-align: justify;
+  justify-content: center;
+  text-align: center;
   height: 24px;
   font-family: "Segoe UI";
   font-style: normal;
@@ -325,11 +327,20 @@ const RequiredPlate = styled.div`
   line-height: 24px;
   color: #24db82;
   background: rgba(0, 0, 0, 0.04);
-  max-width: 75px;
+  max-width: 150%;
+  width: 52px;
+  @media ${device.mobile} {
+    margin-left: 0px;
+  }
+  @media ${device.laptop} {
+    margin-left: 12px;
+  }
 `
 
 const InvalidPlate = styled(RequiredPlate)`
   color: #ff9900;
+  max-width: 150%;
+  width: 85px;
 `
 
 const TransferIdTitle = styled.h1`
@@ -337,15 +348,16 @@ const TransferIdTitle = styled.h1`
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  line-height: 32px;
   @media ${device.mobile} {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    margin-bottom: -8px;
+    margin-bottom: -5px;
   }
   @media ${device.laptop} {
     flex-direction: row;
+    margin-right: auto;
+    width: 100%;
   }
 `
 

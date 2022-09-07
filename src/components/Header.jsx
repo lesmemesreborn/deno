@@ -10,7 +10,7 @@ import Language from "./assets/languageArrow.svg"
 import ZestpayLogo from "./assets/zestpayLogo.svg"
 
 const Header = () => {
-  const [dropdownActive, setDropdownActive] = useState(false)
+  const [active, setActive] = useState(false)
   return (
     <Container>
       <Top>
@@ -21,11 +21,11 @@ const Header = () => {
             </Cancel>
           </Link>
           <LogoHeader src={ZestpayLogo} alt="" />
-          <LanguageBlock onClick={() => setDropdownActive(!dropdownActive)}>
+          <LanguageBlock onClick={() => setActive(!active)}>
             <LanguageBlock>
               English <ImgLanguage src={Language} alt="" />
             </LanguageBlock>
-            <Dropdown active={dropdownActive} setActive={setDropdownActive} />
+            <Dropdown active={active} setActive={setActive} />
           </LanguageBlock>
         </TopInner>
       </Top>

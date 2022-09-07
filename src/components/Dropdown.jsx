@@ -1,11 +1,8 @@
 import React, { useState } from "react"
 import styled from "styled-components"
+import { device } from "../device"
 
 const Dropdown = ({ active, setActive }) => {
-  const [open, setOpen] = useState(false)
-  const [selection, setSelection] = useState([])
-  const toggle = () => setOpen(!open)
-
   const handleOnClick = (item) => {}
 
   const items = [
@@ -24,8 +21,8 @@ const Dropdown = ({ active, setActive }) => {
   ]
 
   return (
-    <div>
-      {open && (
+    <div onClick={() => setActive(true)}>
+      {active && (
         <DropdownContainer>
           {items.map((item) => (
             <DropdownItem key={item.id}>
@@ -50,11 +47,21 @@ const DropdownContainer = styled.ul`
   box-shadow: 2px 2px 4px #cfcfcf;
   flex-direction: column;
   padding: 0px;
+  position: absolute;
+  background: #fff;
+  margin: 20px -75px;
+  @media ${device.mobile} {
+    margin: 49px -120px;
+  }
+  @media ${device.laptop} {
+    margin: 20px -75px;
+  }
 `
 const DropdownItem = styled.div`
   display: flex;
   font-family: "Segoe UI";
-  height: 32px;
+  align-items: center;
+  height: 44px;
   width: 100%;
   font-style: normal;
   font-weight: 400;
@@ -64,7 +71,7 @@ const DropdownItem = styled.div`
   padding-left: 8px;
   &:hover,
   &:focus {
-    width: 96%;
+    width: 100%;
     cursor: pointer;
     background: #24db82;
     color: white;

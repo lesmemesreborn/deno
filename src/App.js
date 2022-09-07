@@ -7,26 +7,26 @@ import PandapayPage from "./components/PandapayPage"
 import Main from "./components/Main"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { device } from "./device"
-import GlobalStyles from './global'
+import GlobalStyles from "./global"
 
 const App = () => {
   return (
- <>
+    <>
       <Router>
-            <MainWrapper>
-        <Header />
-        <Container>
-          <Routes>
-            <Route path="/pandapay" element={<PandapayPage />} />
-            <Route path="/wirepay" element={<WirepayPage />} />
-            <Route path="/" element={<Main />} />
-          </Routes>
-        </Container>
-        <Footer />
+        <MainWrapper>
+          <Header />
+          <Container>
+            <Routes>
+              <Route path="/pandapay" element={<PandapayPage />} />
+              <Route path="/wirepay" element={<WirepayPage />} />
+              <Route path="/" element={<Main />} />
+            </Routes>
+          </Container>
+          <Footer />
         </MainWrapper>
       </Router>
       <GlobalStyles />
-      </>
+    </>
   )
 }
 
